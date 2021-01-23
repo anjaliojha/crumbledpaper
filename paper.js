@@ -1,7 +1,7 @@
 class Paper {
     constructor(x, y, width, height) {
       var options = {
-          restitution:0.3,
+          restitution:1,
           friction:0.5,
           density:1.2,
           isStatic:false,
@@ -9,7 +9,7 @@ class Paper {
       
       this.width = width;
       this.height = height;
-      Matter.Bodies.circle(50,50,40,options);
+      this.body = Bodies.circle(50,50,40,options);
       World.add(world, this.body);
     }
     display(){
@@ -17,11 +17,13 @@ class Paper {
       var angle = this.body.angle;
       push();
       translate(pos.x, pos.y);
-      elipseMode(CENTER);
+      ellipseMode(CENTER);
       fill(255);
       strokeWeight(4);
+    
       stroke("green");
-      pop();
+      ellipse(pos.x, pos.y, 40, 40);
+            pop();
     }
   };
   
